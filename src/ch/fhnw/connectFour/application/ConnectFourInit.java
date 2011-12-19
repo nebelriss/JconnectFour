@@ -1,37 +1,38 @@
 package ch.fhnw.connectFour.application;
 
-import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ConnectFourInit {
-	
-	private static Logger logger = Logger.getLogger("ch.fhnw.connectFour");
-	private static FileHandler fh;
-	
-	public ConnectFourInit() {
-		
-		myLogger();
-		logger.info("ConnectFour started");
-		
-	}
-	
-	
-	private static void myLogger() {
-		// open new fileHandler
-		try {
-			fh = new FileHandler("connectFour.log");
-		} catch (SecurityException | IOException e) {
-			e.printStackTrace();
-		}
+import javax.swing.JFrame;
 
-		// send logger output to file
-		logger.addHandler(fh);
-		
-		// set level
-		logger.setLevel(Level.ALL);
+import ch.fhnw.connectFour.gui.MainPanel;
+import ch.fhnw.connectFour.logic.BoardData;
+
+public class ConnectFourInit {
+
+	private static Logger log = Logger.getLogger("ch.fhnw.connectFour");
 	
+	final String version;
+	final String applicationName;
+	
+	final JFrame mainFrame;
+
+	public ConnectFourInit() {
+		log.info("ConnectFour started");
+		
+		version = "0.1";
+		applicationName = "connectFour - AlphaBeta-Algorithm";
+		
+		mainFrame = new JFrame(applicationName);
+		ApplicationContext applicationContext = new ApplicationContext(mainFrame);
+		
+		MainPanel mainPanel = new MainPanel(applicationContext);
+		
+		mainFrame.setContentPane(mainPanel);
+		mainFrame.pack();
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setSize(800, 600);
+		mainFrame.setVisible(true);
+		
 	}
 
 }
