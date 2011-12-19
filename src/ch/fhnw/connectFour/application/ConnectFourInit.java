@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 import ch.fhnw.connectFour.gui.MainPanel;
-import ch.fhnw.connectFour.logic.BoardData;
 
 public class ConnectFourInit {
 
