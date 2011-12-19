@@ -1,6 +1,6 @@
 package ch.fhnw.connectFour.main;
 
-public class Connectfour {
+public class ConnectFour {
 
 	/**
 	 * @param args
