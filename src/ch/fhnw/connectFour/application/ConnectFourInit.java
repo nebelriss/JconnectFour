@@ -1,5 +1,6 @@
 package ch.fhnw.connectFour.application;
 
+import java.util.Properties;
 import java.util.logging.Logger;
 
 import javax.swing.JFrame;
@@ -9,6 +10,7 @@ import ch.fhnw.connectFour.gui.MainPanel;
 public class ConnectFourInit {
 
 	private static Logger log = Logger.getLogger("ch.fhnw.connectFour");
+	private Properties prop;
 	
 	final String version;
 	final String applicationName;
@@ -17,12 +19,13 @@ public class ConnectFourInit {
 
 	public ConnectFourInit() {
 		log.info("ConnectFour started");
+		prop = new ApplicationProperties().getProperties();
+
+		version = prop.getProperty("version");
+		applicationName = prop.getProperty("applicationName");
 		
-		version = "0.1";
-		applicationName = "connectFour - AlphaBeta-Algorithm";
-		
-		mainFrame = new JFrame(applicationName);
-		ApplicationContext applicationContext = new ApplicationContext(mainFrame);
+		mainFrame = new JFrame(applicationName + " | " + version);
+		ApplicationContext applicationContext = new ApplicationContext(mainFrame, prop);
 		
 		MainPanel mainPanel = new MainPanel(applicationContext);
 		

@@ -22,7 +22,7 @@ public class ApplicationProperties {
 		
 		defaultProperties = new Properties();
 		try {
-			FileInputStream in = new FileInputStream("default.properties");
+			FileInputStream in = new FileInputStream("properties/default.properties");
 			defaultProperties.load(in);
 			in.close();
 		} catch (IOException e) {
@@ -33,11 +33,15 @@ public class ApplicationProperties {
 	private void loadApplicationProperties() {
 		applicationProperties = new Properties(defaultProperties);
 		try {
-			FileInputStream in = new FileInputStream("application.properties");
+			FileInputStream in = new FileInputStream("properties/application.properties");
 			applicationProperties.load(in);
 			in.close();
 		} catch (IOException e) {
 			log.warning(e.toString());
 		}
+	}
+	
+	public Properties getProperties() {
+		return applicationProperties;
 	}
 }
