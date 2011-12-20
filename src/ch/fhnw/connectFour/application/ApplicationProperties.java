@@ -45,7 +45,7 @@ public class ApplicationProperties {
 	
 	private void loadLanguageProperties() {
 		languageProperties = new Properties();
-		String path = "properties/" + applicationProperties.getProperty("language") + ".properties";
+		String path = "language/" + applicationProperties.getProperty("language") + ".properties";
 		try {
 			FileInputStream in = new FileInputStream(path);
 			languageProperties.load(in);
