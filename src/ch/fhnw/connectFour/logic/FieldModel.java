@@ -1,5 +1,6 @@
 package ch.fhnw.connectFour.logic;
 
+import ch.fhnw.connectFour.logic.listeners.FieldListener;
 import ch.fhnw.connectFour.persistance.FieldOwner;
 
 public interface FieldModel {

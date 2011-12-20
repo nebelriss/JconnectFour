@@ -8,10 +8,7 @@ public class FieldTest {
 
 	@Test
 	public void testField() {
-		Field field = new Field(2, 2);
-		
-		assertEquals("X is:", 2, field.getX());
-		assertEquals("Y is:", 2, field.getY());
+		Field field = new Field();
 		
 		assertEquals("Owner:", FieldOwner.none, field.getFieldOwner());
 		

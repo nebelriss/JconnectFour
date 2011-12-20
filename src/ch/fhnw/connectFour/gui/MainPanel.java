@@ -16,8 +16,6 @@ public class MainPanel extends JPanel{
 	private ApplicationContext applicationContext;
 	private Properties prop;
 	
-	private MainMenuBar menubar;
-	
 	public MainPanel(ApplicationContext applicationContext) {
 		
 		this.applicationContext = applicationContext;
@@ -27,8 +25,8 @@ public class MainPanel extends JPanel{
 	}
 
 	private void initComponents() {
-		menubar = new MainMenuBar(applicationContext);
-		
+		new MainMenuBar(applicationContext);
+		new GridPanel(applicationContext);
 	}
 
 }

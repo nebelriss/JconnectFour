@@ -14,12 +14,10 @@ public class FieldModelImplTest {
 		ApplicationContext a = new ApplicationContext(null, p);
 		FieldModelImpl f = new FieldModelImpl(a);
 		
-		FieldOwner fo = f.getFieldOwner(5, 5);
-		System.out.println(fo);
+		f.getFieldOwner(5, 5);
 		
-		f.setFieldChanged(5, 5, FieldOwner.red);
-		FieldOwner fo2 = f.getFieldOwner(5, 5);
-		System.out.println(fo2);
+		f.setFieldChanged(5, 5, FieldOwner.blue);
+		f.getFieldOwner(5, 5);
 	}
 
 }
