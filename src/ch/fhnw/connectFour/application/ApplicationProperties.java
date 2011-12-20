@@ -11,10 +11,12 @@ public class ApplicationProperties {
 	
 	private Properties defaultProperties;
 	private Properties applicationProperties;
+	private Properties languageProperties;
 	
 	public ApplicationProperties() {
 		loadDefaultProperties();
 		loadApplicationProperties();
+		loadLanguageProperties();
 		log.info("properties loaded.");
 	}
 	
@@ -41,7 +43,23 @@ public class ApplicationProperties {
 		}
 	}
 	
+	private void loadLanguageProperties() {
+		languageProperties = new Properties();
+		String path = "properties/" + applicationProperties.getProperty("language") + ".properties";
+		try {
+			FileInputStream in = new FileInputStream(path);
+			languageProperties.load(in);
+			in.close();
+		} catch (IOException e) {
+			log.warning(e.toString());
+		}
+	}
+	
 	public Properties getProperties() {
 		return applicationProperties;
+	}
+	
+	public Properties getLanguage() {
+		return languageProperties;
 	}
 }

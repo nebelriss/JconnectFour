@@ -13,6 +13,8 @@ public class ApplicationPropertiesTest {
 		Properties p = ap.getProperties();
 		String version = p.getProperty("version");
 		System.out.println(version);
+		Properties lang = ap.getLanguage();
+		System.out.println(lang.getProperty("fileNew"));
 	}
 
 }

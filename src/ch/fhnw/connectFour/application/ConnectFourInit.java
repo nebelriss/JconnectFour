@@ -3,38 +3,48 @@ package ch.fhnw.connectFour.application;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import javax.swing.JFrame;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
 import ch.fhnw.connectFour.gui.MainPanel;
 
 public class ConnectFourInit {
 
 	private static Logger log = Logger.getLogger("ch.fhnw.connectFour");
-	private Properties prop;
+	private ApplicationProperties appProp;
 	
 	final String version;
 	final String applicationName;
 	
-	final JFrame mainFrame;
+	final Shell shell;
 
 	public ConnectFourInit() {
 		log.info("ConnectFour started");
-		prop = new ApplicationProperties().getProperties();
+		appProp = new ApplicationProperties();
+		Properties prop = appProp.getProperties();
 
 		version = prop.getProperty("version");
 		applicationName = prop.getProperty("applicationName");
+		String title = applicationName + " | " + version;
 		
-		mainFrame = new JFrame(applicationName + " | " + version);
-		ApplicationContext applicationContext = new ApplicationContext(mainFrame, prop);
+		Display display = new Display();
+		shell = new Shell(display);
+		shell.setLayout(new GridLayout());
 		
-		MainPanel mainPanel = new MainPanel(applicationContext);
+		ApplicationContext applicationContext = new ApplicationContext(shell, appProp);	
+		new MainPanel(applicationContext);
 		
-		mainFrame.setContentPane(mainPanel);
-		mainFrame.pack();
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setSize(800, 600);
-		mainFrame.setVisible(true);
+		shell.setText(title);
+		//shell.pack();
+		shell.open();
 		
+		while(!shell.isDisposed()) {
+			if(display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+		display.dispose();
 	}
 
 }
