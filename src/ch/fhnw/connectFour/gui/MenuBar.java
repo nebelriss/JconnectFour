@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import ch.fhnw.connectFour.application.ApplicationContext;
 
-public class MainMenuBar {
+public class MenuBar {
 
 	private static Logger log = Logger.getLogger("ch.fhnw.connectFour");
 	private Properties lang;
@@ -21,7 +21,7 @@ public class MainMenuBar {
 	 * 
 	 * @param applicationContext
 	 */
-	public MainMenuBar(ApplicationContext applicationContext) {
+	public MenuBar(ApplicationContext applicationContext) {
 		super();
 		
 		lang = applicationContext.getLanguage();

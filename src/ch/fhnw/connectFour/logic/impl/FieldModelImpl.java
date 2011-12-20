@@ -33,6 +33,8 @@ public class FieldModelImpl implements FieldModel {
 		
 		// init listener arreylist
 		listeners = new ArrayList<FieldListener>();
+		
+		log.info("FieldModelImpl loaded.");
 	}
 	
 	private void createFields() {
