@@ -60,12 +60,14 @@ public class FieldModelImpl implements FieldModel {
 
 	@Override
 	public void addListener(FieldListener fieldListener) {
-		// TODO Auto-generated method stub
+		listeners.add(fieldListener);
 
 	}
 	
 	protected void fireChanged() {
-		
+		for(FieldListener listener : listeners) {
+			listener.dataChanged();
+		}
 	}
 
 }
