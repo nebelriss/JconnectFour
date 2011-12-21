@@ -9,8 +9,10 @@ public class Field {
 		fieldOwner = FieldOwner.none;
 	}
 	
-	public FieldOwner getFieldOwner() {
+	public FieldOwner getFieldOwner() {		
+		System.out.println("");
 		return fieldOwner;
+
 	}
 	
 	public void setFieldOwner(FieldOwner fieldOwner) {

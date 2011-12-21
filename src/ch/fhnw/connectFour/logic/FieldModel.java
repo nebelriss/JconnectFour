@@ -5,7 +5,7 @@ import ch.fhnw.connectFour.persistance.FieldOwner;
 
 public interface FieldModel {
 	
-	void setFieldChanged(int x, int y, FieldOwner fieldOwner);
+	public boolean setFieldChanged(int x, int y, FieldOwner fieldOwner);
 	
 	FieldOwner getFieldOwner(int x, int y);
 	

@@ -11,6 +11,11 @@ import ch.fhnw.connectFour.logic.listeners.FieldListener;
 import ch.fhnw.connectFour.persistance.Field;
 import ch.fhnw.connectFour.persistance.FieldOwner;
 
+/**
+ * 
+ * @author Michel Heiniger
+ *
+ */
 public class FieldModelImpl implements FieldModel {
 	
 	private static Logger log = Logger.getLogger("ch.fhnw.connectFour");
@@ -29,6 +34,7 @@ public class FieldModelImpl implements FieldModel {
 		boardHeight = new Integer(prop.getProperty("boardHeight"));
 		boardWidth = new Integer(prop.getProperty("boardWidth"));
 		
+		// create all fields
 		createFields();
 		
 		// init listener arreylist
@@ -50,13 +56,27 @@ public class FieldModelImpl implements FieldModel {
 	}
 
 	@Override
-	public void setFieldChanged(int x, int y, FieldOwner fieldOwner) {
-		field[x][y].setFieldOwner(fieldOwner);
-		log.info("new fieldOwner for " + x + "/" + y + ": " + fieldOwner);
+	public boolean setFieldChanged(int x, int y, FieldOwner fieldOwner) {
+		for(int i = 0; i < boardHeight; i++) {
+			if (field[x][i].getFieldOwner() == FieldOwner.none) {
+				field[x][i].setFieldOwner(fieldOwner);
+				
+				log.info("Found a free field.\nFree field was: " + x + " / " + i);
+				
+				// if free field was found fire and return true
+				fireChanged();
+				return true;
+			}	
+		}
+		
+		// if all vertical field are occupied
+		log.info("All vertikal fields are occupied, so false is going returned");
+		return false;
 	}
 
 	@Override
 	public FieldOwner getFieldOwner(int x, int y) {
+		log.info("returned the requested field");
 		return field[x][y].getFieldOwner();
 	}
 
