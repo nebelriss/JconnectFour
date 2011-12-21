@@ -9,6 +9,8 @@ public interface FieldModel {
 	
 	FieldOwner getFieldOwner(int x, int y);
 	
+	public void clearFields();
+	
 	void addListener(FieldListener fieldListener);
 
 }

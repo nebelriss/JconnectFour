@@ -57,7 +57,7 @@ public class FieldModelImpl implements FieldModel {
 
 	@Override
 	public boolean setFieldChanged(int x, int y, FieldOwner fieldOwner) {
-		for(int i = 0; i < boardHeight; i++) {
+		for (int i = 0; i < boardHeight; i++) {
 			if (field[x][i].getFieldOwner() == FieldOwner.none) {
 				field[x][i].setFieldOwner(fieldOwner);
 				
@@ -78,6 +78,15 @@ public class FieldModelImpl implements FieldModel {
 	public FieldOwner getFieldOwner(int x, int y) {
 		log.info("returned the requested field");
 		return field[x][y].getFieldOwner();
+	}
+	
+	@Override
+	public void clearFields() {
+		for (int i = 0; i < boardWidth; i++) {
+			for (int j = 0; j < boardHeight; j++) {
+				field[i][j].setFieldOwner(FieldOwner.none);
+			}
+		}
 	}
 
 	@Override
