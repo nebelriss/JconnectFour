@@ -31,7 +31,7 @@ public class ConnectFourInit {
 		String title = applicationName + " | " + version;
 		
 		mainFrame = new JFrame(applicationName + " | " + version);
-		ApplicationContext applicationContext = new ApplicationContext(mainFrame, prop);
+		ApplicationContext applicationContext = new ApplicationContext(mainFrame, appProp);
 		
 		MainPanel mainPanel = new MainPanel(applicationContext);
 		
