@@ -3,6 +3,8 @@ package ch.fhnw.connectFour.application;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import javax.swing.JFrame;
+
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -17,7 +19,7 @@ public class ConnectFourInit {
 	final String version;
 	final String applicationName;
 	
-	final Shell shell;
+	final JFrame mainFrame;
 
 	public ConnectFourInit() {
 		log.info("ConnectFour started");
@@ -28,23 +30,16 @@ public class ConnectFourInit {
 		applicationName = prop.getProperty("applicationName");
 		String title = applicationName + " | " + version;
 		
-		Display display = new Display();
-		shell = new Shell(display);
-		shell.setLayout(new GridLayout());
+		mainFrame = new JFrame(applicationName + " | " + version);
+		ApplicationContext applicationContext = new ApplicationContext(mainFrame, prop);
 		
-		ApplicationContext applicationContext = new ApplicationContext(shell, appProp);	
-		new MainPanel(applicationContext);
+		MainPanel mainPanel = new MainPanel(applicationContext);
 		
-		shell.setText(title);
-		//shell.pack();
-		shell.open();
-		
-		while(!shell.isDisposed()) {
-			if(display.readAndDispatch()) {
-				display.sleep();
-			}
-		}
-		display.dispose();
+		mainFrame.setContentPane(mainPanel);
+		mainFrame.pack();
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setSize(800, 600);
+		mainFrame.setVisible(true);
 	}
 
 }

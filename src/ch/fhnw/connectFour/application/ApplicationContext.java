@@ -3,6 +3,8 @@ package ch.fhnw.connectFour.application;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import javax.swing.JFrame;
+
 import org.eclipse.swt.widgets.Shell;
 
 import ch.fhnw.connectFour.logic.FieldModel;
@@ -13,11 +15,11 @@ public class ApplicationContext {
 	private static Logger log = Logger.getLogger("ch.fhnw.connectFour");
 	private ApplicationProperties prop;
 
-	private Shell shell;
+	private JFrame mainFrame;
 	private FieldModel fieldModel;
 
-	public ApplicationContext(Shell shell, ApplicationProperties prop) {
-		this.shell = shell;
+	public ApplicationContext(JFrame mainFrame, ApplicationProperties prop) {
+		this.mainFrame = mainFrame;
 		this.prop = prop;
 		
 		fieldModel = new FieldModelImpl(this);
@@ -25,8 +27,8 @@ public class ApplicationContext {
 		log.info("applicationContext loaded");
 	}
 
-	public Shell getShell() {
-		return shell;
+	public JFrame getMainFrame() {
+		return mainFrame;
 	}
 
 	public Properties getProperties() {
