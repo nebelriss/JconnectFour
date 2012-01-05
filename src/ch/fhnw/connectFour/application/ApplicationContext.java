@@ -5,8 +5,6 @@ import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 
-import org.eclipse.swt.widgets.Shell;
-
 import ch.fhnw.connectFour.logic.FieldModel;
 import ch.fhnw.connectFour.logic.impl.FieldModelImpl;
 

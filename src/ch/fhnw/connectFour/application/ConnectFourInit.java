@@ -5,10 +5,6 @@ import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-
 import ch.fhnw.connectFour.gui.MainPanel;
 
 public class ConnectFourInit {
