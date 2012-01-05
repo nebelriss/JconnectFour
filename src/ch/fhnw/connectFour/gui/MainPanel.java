@@ -1,5 +1,6 @@
 package ch.fhnw.connectFour.gui;
 
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 import ch.fhnw.connectFour.gui.MenuBar;
@@ -15,11 +16,15 @@ public class MainPanel extends JPanel{
 		this.applicationContext = applicationContext;
 		
 		initComponents();
+		configComponents();
 	}
 
 	private void initComponents() {
-		new MenuBar(applicationContext);
 		new GridPanel(applicationContext);
+	}
+	
+	private void configComponents() {
+		
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 import ch.fhnw.connectFour.gui.MainPanel;
+import ch.fhnw.connectFour.gui.MenuBar;
 
 public class ConnectFourInit {
 
@@ -29,6 +30,8 @@ public class ConnectFourInit {
 		mainFrame = new JFrame(applicationName + " | " + version);
 		ApplicationContext applicationContext = new ApplicationContext(mainFrame, appProp);
 		
+		// add MenuBar and MainPanel to the mainFrame
+		mainFrame.setJMenuBar(new MenuBar(applicationContext));
 		MainPanel mainPanel = new MainPanel(applicationContext);
 		
 		mainFrame.setContentPane(mainPanel);
