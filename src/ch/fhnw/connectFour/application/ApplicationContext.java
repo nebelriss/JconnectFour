@@ -6,6 +6,8 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 import ch.fhnw.connectFour.logic.FieldModel;
+import ch.fhnw.connectFour.logic.GameController;
+import ch.fhnw.connectFour.logic.GameLogic;
 import ch.fhnw.connectFour.logic.impl.FieldModelImpl;
 
 public class ApplicationContext {
@@ -15,13 +17,17 @@ public class ApplicationContext {
 
 	private JFrame mainFrame;
 	private FieldModel fieldModel;
+	private GameController gameController;
+	private GameLogic gameLogic;
 
 	public ApplicationContext(JFrame mainFrame, ApplicationProperties prop) {
 		this.mainFrame = mainFrame;
 		this.prop = prop;
 		
 		fieldModel = new FieldModelImpl(this);
-
+		gameController = new GameController(this);
+		gameLogic = new GameLogic(this);
+		
 		log.info("applicationContext loaded");
 	}
 
@@ -39,6 +45,10 @@ public class ApplicationContext {
 	
 	public FieldModel getFieldModel() {
 		return fieldModel;
+	}
+	
+	public GameController getGamecontroller() {
+		return gameController;
 	}
 
 }
