@@ -24,21 +24,30 @@ public class GridPanelController {
 		final Properties prop = applicationController.getProperties();
 		final JFrame mainFrame = applicationController.getMainFrame();
 		
+		final int border = new Integer(prop.getProperty("border"));
+		final int width = mainFrame.getSize().width;
+		final int height = mainFrame.getSize().height;
+		
 		gridPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				int boardWidth = new Integer(prop.getProperty("boardWidth"));
 				int boardHeight = new Integer(prop.getProperty("boardHeight"));
 				
-				int widthStep = mainFrame.getSize().width / boardWidth;
-				int heightStep = mainFrame.getSize().height / boardHeight;
+				int widthStep = (mainFrame.getSize().width - (2 * border))  / boardWidth;
+				int heightStep = (mainFrame.getSize().height - (2 * border)) / boardHeight;
 				
-				int x = e.getX() / widthStep;
-				int y = e.getY() / heightStep;
+				int x = (e.getX() - (2 * border)) / widthStep + 1;
+				int y = (e.getY() - (2 * border)) / heightStep;
+				
+				y = boardHeight - y;
+				System.out.println(x + "  " + y);
 				
 				if (gameController.canPlayerPlay() == true) {
+
 					field.setFieldChanged(x, y, FieldOwner.red);
-					gameController.playerPlayed(true);
+					
 					log.info("field set");
 				}
 			}

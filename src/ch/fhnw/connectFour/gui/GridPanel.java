@@ -1,5 +1,6 @@
 package ch.fhnw.connectFour.gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -8,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ch.fhnw.connectFour.application.ApplicationContext;
+import ch.fhnw.connectFour.gui.controller.GridPanelController;
 import ch.fhnw.connectFour.logic.FieldModel;
 import ch.fhnw.connectFour.logic.listeners.FieldListener;
 import ch.fhnw.connectFour.persistance.FieldOwner;
@@ -44,9 +46,11 @@ public class GridPanel extends JPanel{
 			}
 		});
 		
+		new GridPanelController(applicationContext, this);
+		
 		mainFrame = applicationContext.getMainFrame();
 		
-		border = 80;
+		border = new Integer(prop.getProperty("border"));
 		
 		boardWidth = new Integer(prop.getProperty("boardWidth"));
 		boardHeight = new Integer(prop.getProperty("boardHeight"));
@@ -82,7 +86,7 @@ public class GridPanel extends JPanel{
 		int x1 = border;
 		int x2 = width - border;
 		int y = height - border;
-		log.info("horizontal step is: " + step);
+
 		for (int i = 0; i < boardHeight + 1; i++) {
 			g.drawLine(x1, y, x2, y);
 			y -= step;	
@@ -96,7 +100,7 @@ public class GridPanel extends JPanel{
 		int y1 = border;
 		int y2 = height - border;
 		int x = border;
-		log.info("vertical step is: " + step);
+
 		for (int i = 0; i < boardWidth + 1; i++) {
 			g.drawLine(x, y1, x, y2);
 			x += step;
@@ -104,13 +108,23 @@ public class GridPanel extends JPanel{
 	}
 	
 	private void drawPins(Graphics g) {
+		
+		int verticalStep = (width - (2 * border) ) / boardWidth;
+		int horizontalStep = (height - (2 * border) ) / boardHeight;
+		
+				
 		for (int i = 0; i < boardWidth; i++) {
 			for (int j = 0; j < boardHeight; j++) {
+
 				if ( fieldModel.getFieldOwner(i, j) == FieldOwner.blue) {
-					g.drawOval(3, 3, 3, 3);
+					g.fillOval(30, 30, 30, 30);
 				} else if (fieldModel.getFieldOwner(i, j) == FieldOwner.red) {
+					int x = (border + (verticalStep * i) + 25);
+					int y = height - (2 * border) - (horizontalStep * j) + 25;
 					
-				} else {}
+					g.setColor(Color.RED);
+					g.fillOval(x, y, 50, 50);
+				} 
 			}
 		}
 	}

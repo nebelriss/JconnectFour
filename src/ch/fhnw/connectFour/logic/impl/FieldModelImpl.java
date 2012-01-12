@@ -58,17 +58,25 @@ public class FieldModelImpl implements FieldModel {
 	@Override
 	public boolean setFieldChanged(int x, int y, FieldOwner fieldOwner) {
 		for (int i = 0; i < boardHeight; i++) {
-			if (field[x][i].getFieldOwner() == FieldOwner.none) {
-				field[x][i].setFieldOwner(fieldOwner);
-				
-				log.info("Found a free field.\nFree field was: " + x + " / " + i);
-				
-				// if free field was found fire and return true
-				fireChanged();
-				return true;
-			}	
+
+			try {
+				if (field[x][i].getFieldOwner() == FieldOwner.none) {
+
+					field[x][i].setFieldOwner(fieldOwner);
+
+					log.info("Found a free field.\nFree field was: " + x
+							+ " / " + i);
+
+					// if free field was found fire and return true
+					fireChanged();
+					return true;
+				}
+			} catch (ArrayIndexOutOfBoundsException e) {
+				log.info("Index out of bounds");
+				return false;
+			}
 		}
-		
+
 		// if all vertical field are occupied
 		log.info("All vertikal fields are occupied, so false is going returned");
 		return false;
@@ -76,7 +84,6 @@ public class FieldModelImpl implements FieldModel {
 
 	@Override
 	public FieldOwner getFieldOwner(int x, int y) {
-		log.info("returned the requested field");
 		return field[x][y].getFieldOwner();
 	}
 	
