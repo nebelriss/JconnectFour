@@ -4,6 +4,6 @@ import ch.fhnw.connectFour.persistance.FieldOwner;
 
 public interface FourConnected {
 	
-	public FieldOwner fourConnected();
+	public FieldOwner testNow();
 
 }

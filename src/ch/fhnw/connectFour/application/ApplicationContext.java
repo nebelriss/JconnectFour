@@ -11,6 +11,7 @@ import ch.fhnw.connectFour.logic.GameController;
 import ch.fhnw.connectFour.logic.GameLogic;
 import ch.fhnw.connectFour.logic.impl.FieldModelImpl;
 import ch.fhnw.connectFour.logic.impl.FourConnectedImpl;
+import ch.fhnw.connectFour.logic.impl.GameLogicImpl;
 
 public class ApplicationContext {
 
@@ -29,8 +30,8 @@ public class ApplicationContext {
 		
 		fieldModel = new FieldModelImpl(this);
 		gameController = new GameController(this);
-		gameLogic = new GameLogic(this);
-		//fourConnected = new FourConnectedImpl(this);
+		gameLogic = new GameLogicImpl(this);
+		fourConnected = new FourConnectedImpl(this);
 		
 		log.info("applicationContext loaded");
 	}

@@ -43,7 +43,7 @@ public class FourConnectedImpl implements FourConnected{
 	 * diagonal from low left to right and low right to left.
 	 * 
 	 */
-	public FieldOwner fourConnected() {
+	public FieldOwner testNow() {
 		int num;
 
 		for (int y = 0; y < boardHeight; y++) {

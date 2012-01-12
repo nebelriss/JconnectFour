@@ -3,6 +3,7 @@ package ch.fhnw.connectFour.logic;
 import java.util.logging.Logger;
 
 import ch.fhnw.connectFour.application.ApplicationContext;
+import ch.fhnw.connectFour.persistance.FieldOwner;
 
 /**
  * 
@@ -13,16 +14,15 @@ public class GameController {
 	
 	private static Logger log = Logger.getLogger("ch.fhnw.connectFour");
 	
-	private ApplicationContext applicationContext;
+	private FourConnected fourConnected;
 	
 	boolean gameFinished;
 	boolean player;
 	
 	public GameController(ApplicationContext applicationContext) {
 		
-		this.applicationContext = applicationContext;
-		
-		
+		fourConnected = applicationContext.getFourConnected();
+
 		gameFinished = false;
 		
 		// if player == true -> player can play
@@ -31,15 +31,30 @@ public class GameController {
 	}
 	
 	public boolean canPlayerPlay() {
-		return player;
+		if (!gameFinished) {
+			return player;
+		}
+		return false;
 	}
 	
 	public void playerPlayed() {
-		player = false;
-		
-		
-		
-		log.info("player played");
+		if (!gameFinished) {
+			player = false;
+
+			// test if player wins
+			FieldOwner owner = fourConnected.testNow();
+
+			if (owner != FieldOwner.none) {
+				// someone won
+				gameFinished = true;
+				log.info(owner + " - won");
+				// TODO open messagebox with the name of the player who won and
+				// reset the game
+			}
+			log.info("player played");
+			
+			
+		}
 	}
 
 }
