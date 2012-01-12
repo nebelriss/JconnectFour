@@ -1,0 +1,8 @@
+ch.fhnw.connectFour.application
+ch.fhnw.connectFour.gui
+ch.fhnw.connectFour.gui.controller
+ch.fhnw.connectFour.logic
+ch.fhnw.connectFour.logic.impl
+ch.fhnw.connectFour.logic.listeners
+ch.fhnw.connectFour.main
+ch.fhnw.connectFour.persistance
