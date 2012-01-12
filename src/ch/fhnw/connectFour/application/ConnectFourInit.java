@@ -27,7 +27,7 @@ public class ConnectFourInit {
 		applicationName = prop.getProperty("applicationName");
 		String title = applicationName + " | " + version;
 		
-		mainFrame = new JFrame(applicationName + " | " + version);
+		mainFrame = new JFrame(title);
 		
 		// add MenuBar and MainPanel to the mainFrame
 

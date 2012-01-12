@@ -17,7 +17,7 @@ public class FieldModelImplTest {
 		f.getFieldOwner(5, 5);
 		
 		for(int i = 0; i < 7; i++) {
-			f.setFieldChanged(5, 5, FieldOwner.blue);
+			f.setFieldChanged(5, 5, FieldOwner.computer);
 		}
 
 		f.getFieldOwner(5, 5);

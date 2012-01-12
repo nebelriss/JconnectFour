@@ -52,12 +52,16 @@ public class ApplicationContext {
 		return fieldModel;
 	}
 	
-	public GameController getGamecontroller() {
+	public GameController getGameController() {
 		return gameController;
 	}
 	
 	public FourConnected getFourConnected() {
 		return fourConnected;
+	}
+	
+	public GameLogic getGameLogic() {
+		return gameLogic;
 	}
 
 }

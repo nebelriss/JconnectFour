@@ -12,8 +12,8 @@ public class FieldTest {
 		
 		assertEquals("Owner:", FieldOwner.none, field.getFieldOwner());
 		
-		field.setFieldOwner(FieldOwner.red);
-		assertEquals("Owner:", FieldOwner.red, field.getFieldOwner());
+		field.setFieldOwner(FieldOwner.human);
+		assertEquals("Owner:", FieldOwner.human, field.getFieldOwner());
 	}
 
 }

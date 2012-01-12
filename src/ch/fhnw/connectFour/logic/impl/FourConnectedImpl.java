@@ -35,6 +35,8 @@ public class FourConnectedImpl implements FourConnected{
 
 		boardHeight = new Integer(prop.getProperty("boardHeight"));
 		boardWidth = new Integer(prop.getProperty("boardWidth"));
+		
+		log.info("FourConnect loaded.");
 	}
 
 	/**
@@ -42,8 +44,11 @@ public class FourConnectedImpl implements FourConnected{
 	 * Every possibility to get four in a row is checked. horizontal, vertical,
 	 * diagonal from low left to right and low right to left.
 	 * 
+	 * 
 	 */
 	public FieldOwner testNow() {
+		log.info("testing now if someone has won.");
+		
 		int num;
 
 		for (int y = 0; y < boardHeight; y++) {
@@ -112,7 +117,7 @@ public class FourConnectedImpl implements FourConnected{
 					return player;
 				}
 			}
-			// when the inner four is finished it check if the check is in a
+			// when the inner four is finished it checks if the check is in a
 			// corner.
 			// when yes the xStart value is raised now.
 			if (yStart == 0) {

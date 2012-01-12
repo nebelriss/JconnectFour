@@ -108,4 +108,46 @@ public class FieldModelImpl implements FieldModel {
 		}
 	}
 
+	@Override
+	public boolean isRowFull(int x) {
+		if (field[x][boardHeight].getFieldOwner() == FieldOwner.none) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean setMove(int x, FieldOwner fieldOwner) {
+		for (int i = 0; i < boardHeight; i++) {
+			try {
+				if (field[x][i].getFieldOwner() != FieldOwner.none) {
+					field[x][i].setFieldOwner(fieldOwner);
+					return true;
+				}
+			} catch(ArrayIndexOutOfBoundsException e) {
+				return false;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean rmMove(int x) {
+		for (int i = boardHeight; i <= 0; i--) {
+			if (field[x][i].getFieldOwner() != FieldOwner.none) {
+				field[x][i].setFieldOwner(FieldOwner.none);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean movePosible(int x) {
+		if (field[x][boardHeight].getFieldOwner() == FieldOwner.none) {
+			return true;
+		}
+		return false;
+	}
+
 }
