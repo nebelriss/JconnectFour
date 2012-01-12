@@ -12,21 +12,33 @@ import ch.fhnw.connectFour.application.ApplicationContext;
 public class GameController {
 	
 	private static Logger log = Logger.getLogger("ch.fhnw.connectFour");
-
+	
+	private ApplicationContext applicationContext;
+	
+	boolean gameFinished;
 	boolean player;
 	
 	public GameController(ApplicationContext applicationContext) {
-		// player begins
-		player = true;
 		
+		this.applicationContext = applicationContext;
+		
+		
+		gameFinished = false;
+		
+		// if player == true -> player can play
+		player = true;
+
 	}
 	
 	public boolean canPlayerPlay() {
 		return player;
 	}
 	
-	public void playerPlayed(boolean b) {
-		player = b;
+	public void playerPlayed() {
+		player = false;
+		
+		
+		
 		log.info("player played");
 	}
 
