@@ -108,13 +108,6 @@ public class FieldModelImpl implements FieldModel {
 		}
 	}
 
-	@Override
-	public boolean isRowFull(int x) {
-		if (field[x][boardHeight].getFieldOwner() == FieldOwner.none) {
-			return false;
-		}
-		return true;
-	}
 
 	@Override
 	public boolean setMove(int x, FieldOwner fieldOwner) {
@@ -143,11 +136,11 @@ public class FieldModelImpl implements FieldModel {
 	}
 
 	@Override
-	public boolean movePosible(int x) {
+	public boolean isRowFull(int x) {
 		if (field[x][boardHeight].getFieldOwner() == FieldOwner.none) {
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 }

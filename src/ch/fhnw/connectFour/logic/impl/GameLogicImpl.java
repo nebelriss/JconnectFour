@@ -50,7 +50,7 @@ public class GameLogicImpl implements GameLogic{
 		// generate possible moves
 		List<Integer> moves = new ArrayList<Integer>();
 		for (int i = 0; i < boardHeight; i++) {
-			if (field.movePosible(i)) {
+			if (field.isRowFull(i)) {
 				moves.add(i);
 			}
 		}

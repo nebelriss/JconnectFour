@@ -62,11 +62,11 @@ public class GameController {
 	 * 
 	 */
 	public void playerPlayed() {
-		FieldOwner owner = FieldOwner.none;
+
 		if (!gameFinished) {
 
 			// test if player wins
-			owner = fourConnected.testNow();
+			FieldOwner owner = fourConnected.testNow();
 
 			if (owner != FieldOwner.none) {
 				// someone won
