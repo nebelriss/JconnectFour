@@ -58,12 +58,15 @@ public class GameController {
 		return false;
 	}
 	
-	
+	/**
+	 * 
+	 */
 	public void playerPlayed() {
+		FieldOwner owner = FieldOwner.none;
 		if (!gameFinished) {
 
 			// test if player wins
-			FieldOwner owner = fourConnected.testNow();
+			owner = fourConnected.testNow();
 
 			if (owner != FieldOwner.none) {
 				// someone won
@@ -77,7 +80,10 @@ public class GameController {
 			computersTurn();
 		}
 	}
-
+	
+	/**
+	 * 
+	 */
 	private void computersTurn() {
 		if (!gameFinished) {
 			int nextMove = logic.getNextMove();

@@ -1,7 +1,13 @@
 package ch.fhnw.connectFour.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -17,9 +23,14 @@ public class MenuBar extends JMenuBar{
 	
 	private static Logger log = Logger.getLogger("ch.fhnw.connectFour");
 	private Properties lang;
+	
+	private ApplicationContext applicationContext;
 
 	public MenuBar(ApplicationContext applicationContext) {
 		super();
+		
+		this.applicationContext = applicationContext;
+		
 		// properties
 		lang = applicationContext.getLanguage();
 		
@@ -42,6 +53,15 @@ public class MenuBar extends JMenuBar{
 		// File -> Exit
 		JMenuItem fileExitItem = new JMenuItem(lang.getProperty("fileExit"));
 		fileMenu.add(fileExitItem);
+		
+		fileExitItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				
+			}
+		});
 		// keystroke
 		fileExitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK));
 		
@@ -54,6 +74,15 @@ public class MenuBar extends JMenuBar{
 		// Help -> About
 		JMenuItem helpAboutItem = new JMenuItem(lang.getProperty("helpAbout"));
 		helpMenu.add(helpAboutItem);
+		
+		helpAboutItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new AboutFrame(applicationContext);
+				
+			}
+		});
 		
 	}
 
