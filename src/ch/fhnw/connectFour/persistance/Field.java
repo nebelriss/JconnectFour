@@ -1,5 +1,10 @@
 package ch.fhnw.connectFour.persistance;
 
+/**
+ * 
+ * 
+ *
+ */
 public class Field {
 
 	private FieldOwner fieldOwner;
@@ -10,7 +15,6 @@ public class Field {
 	}
 	
 	public FieldOwner getFieldOwner() {		
-		System.out.println("");
 		return fieldOwner;
 
 	}

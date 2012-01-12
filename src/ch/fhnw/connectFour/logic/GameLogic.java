@@ -9,8 +9,9 @@ public class GameLogic {
 	}
 	
 
-	public void calcNextMove() {
+	public void minmax(int player, int alpha, int beta) {
 		
 	}
+	
 
 }

@@ -28,16 +28,18 @@ public class ConnectFourInit {
 		String title = applicationName + " | " + version;
 		
 		mainFrame = new JFrame(applicationName + " | " + version);
-		ApplicationContext applicationContext = new ApplicationContext(mainFrame, appProp);
 		
 		// add MenuBar and MainPanel to the mainFrame
-		mainFrame.setJMenuBar(new MenuBar(applicationContext));
-		MainPanel mainPanel = new MainPanel(applicationContext);
-		
-		mainFrame.setContentPane(mainPanel);
+
 		mainFrame.pack();
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		mainFrame.setSize(800, 600);
+		
+		ApplicationContext applicationContext = new ApplicationContext(mainFrame, appProp);
+		mainFrame.setJMenuBar(new MenuBar(applicationContext));
+		MainPanel mainPanel = new MainPanel(applicationContext);
+		mainFrame.setContentPane(mainPanel);
 		mainFrame.setVisible(true);
 	}
 

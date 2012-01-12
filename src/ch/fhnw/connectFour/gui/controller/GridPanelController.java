@@ -38,6 +38,7 @@ public class GridPanelController {
 				
 				if (gameController.canPlayerPlay() == true) {
 					field.setFieldChanged(x, y, FieldOwner.red);
+					gameController.playerPlayed(true);
 					log.info("field set");
 				}
 			}
