@@ -31,6 +31,9 @@ public class GameLogicImpl implements GameLogic {
 	int beta;
 	FieldOwner compOwner;
 
+	int initDepth;
+	int chosenMove = 0;
+
 	/**
 	 * Sets the alpha, beta and depth
 	 * 
@@ -48,6 +51,7 @@ public class GameLogicImpl implements GameLogic {
 		beta = 1000;
 		compOwner = FieldOwner.computer;
 
+		initDepth = depth;
 	}
 
 	/**
@@ -58,7 +62,7 @@ public class GameLogicImpl implements GameLogic {
 		int x = alphaBeta(compOwner, depth, alpha, beta);
 
 		log.info("result of alphaBeta " + x);
-		return x;
+		return chosenMove;
 	}
 
 	/**
@@ -89,7 +93,6 @@ public class GameLogicImpl implements GameLogic {
 			return evaluate();
 		}
 
-		System.out.println(moves.size());
 		// run all moves
 		for (int i = 0; i < moves.size(); i++) {
 			// make move
@@ -115,6 +118,14 @@ public class GameLogicImpl implements GameLogic {
 			if (value > alpha) {
 				// set new alpha
 				alpha = value;
+
+				/*
+				 * if the alpha value gets overwritten in the starting knot,
+				 * this means that this limp is at the moment the best move.
+				 */
+				if (depth == initDepth) {
+					chosenMove = moves.get(i);
+				}
 			}
 		}
 
