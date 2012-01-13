@@ -54,7 +54,7 @@ public class GridPanelController {
 				y = boardHeight - y;
 				
 				if (gameController.canPlayerPlay() == true) {
-
+					System.out.println(x);
 					field.setFieldChanged(x, y, FieldOwner.human);
 					
 					log.info("field set");

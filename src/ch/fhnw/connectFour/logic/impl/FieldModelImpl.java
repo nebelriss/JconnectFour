@@ -57,8 +57,9 @@ public class FieldModelImpl implements FieldModel {
 
 	@Override
 	public boolean setFieldChanged(int x, int y, FieldOwner fieldOwner) {
-		for (int i = 0; i < boardHeight; i++) {
 
+		for (int i = 0; i < boardHeight; i++) {
+			
 			try {
 				if (field[x][i].getFieldOwner() == FieldOwner.none) {
 
@@ -72,7 +73,7 @@ public class FieldModelImpl implements FieldModel {
 					return true;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
-				log.info("Index out of bounds");
+				log.info("Index out of bounds\n");
 				return false;
 			}
 		}
@@ -137,8 +138,12 @@ public class FieldModelImpl implements FieldModel {
 
 	@Override
 	public boolean isRowFull(int x) {
-		if (field[x][boardHeight].getFieldOwner() == FieldOwner.none) {
-			return false;
+		try {
+			if (field[x][boardHeight].getFieldOwner() == FieldOwner.none) {
+				return false;
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			log.info("array is full");
 		}
 		return true;
 	}

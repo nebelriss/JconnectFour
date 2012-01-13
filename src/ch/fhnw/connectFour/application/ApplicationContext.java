@@ -33,7 +33,7 @@ public class ApplicationContext {
 	private FourConnected fourConnected;
 
 	/**
-	 * creates new instances for the most used classes where there should be
+	 * Creates new instances for the most used classes where there should be
 	 * just one instance.
 	 * 
 	 * @param mainFrame
@@ -46,9 +46,9 @@ public class ApplicationContext {
 		this.prop = prop;
 
 		fieldModel = new FieldModelImpl(this);
-		gameController = new GameController(this);
 		gameLogic = new GameLogicImpl(this);
 		fourConnected = new FourConnectedImpl(this);
+		gameController = new GameController(this);
 
 		log.info("applicationContext loaded");
 	}

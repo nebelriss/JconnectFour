@@ -41,6 +41,7 @@ public class GameLogicImpl implements GameLogic{
 	@Override
 	public int getNextMove() {
 		int x = alphaBeta(compOwner, depth, alpha, beta);
+		
 		log.info("result of alphaBeta");
 		return x;
 	}
@@ -50,7 +51,7 @@ public class GameLogicImpl implements GameLogic{
 		// generate possible moves
 		List<Integer> moves = new ArrayList<Integer>();
 		for (int i = 0; i < boardHeight; i++) {
-			if (field.isRowFull(i)) {
+			if (!field.isRowFull(i)) {
 				moves.add(i);
 			}
 		}
