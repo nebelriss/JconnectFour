@@ -10,7 +10,13 @@ import ch.fhnw.connectFour.persistance.FieldOwner;
 
 
 /**
- * {@inheritDoc}
+ * 
+ * With this class the application checks if there are four fields in a row
+ * occupied by the same player (human of computer). If someone gets found it
+ * returns the number of the player. if player == 1 -> human if player == 2 ->
+ * computer if 0 gets returned it means that nobody has won.
+ * 
+ * @author Michel Heiniger
  */
 public class FourConnectedImpl implements FourConnected{
 
@@ -23,7 +29,11 @@ public class FourConnectedImpl implements FourConnected{
 
 	private Integer boardHeight;
 	private Integer boardWidth;
-
+	
+	/**
+	 * 
+	 * @param applicationContext
+	 */
 	public FourConnectedImpl(ApplicationContext applicationContext) {
 		prop = applicationContext.getProperties();
 		field = applicationContext.getFieldModel();

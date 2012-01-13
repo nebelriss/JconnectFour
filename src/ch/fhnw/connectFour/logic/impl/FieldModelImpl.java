@@ -12,9 +12,10 @@ import ch.fhnw.connectFour.persistance.Field;
 import ch.fhnw.connectFour.persistance.FieldOwner;
 
 /**
- * {@inheritDoc}
+ * Handles all fields and sets/remove owners of them.
  * 
  * @author Michel Heiniger
+ * 
  */
 public class FieldModelImpl implements FieldModel {
 
@@ -27,7 +28,8 @@ public class FieldModelImpl implements FieldModel {
 	private Field[][] field;
 
 	/**
-	 * {@inheritDoc}
+	 * 
+	 * @param applicationContext
 	 */
 	public FieldModelImpl(ApplicationContext applicationContext) {
 		// properties

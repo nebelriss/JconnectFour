@@ -11,7 +11,11 @@ import ch.fhnw.connectFour.logic.GameLogic;
 import ch.fhnw.connectFour.persistance.FieldOwner;
 
 /**
- * {@inheritDoc}
+ * This is the logic of the game which calculates the next move for the
+ * computer. It uses a alphabeta algorithm.
+ * 
+ * @author Michel Heiniger
+ * 
  */
 public class GameLogicImpl implements GameLogic {
 
