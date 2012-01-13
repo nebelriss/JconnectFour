@@ -3,6 +3,12 @@ package ch.fhnw.connectFour.logic;
 import ch.fhnw.connectFour.logic.listeners.FieldListener;
 import ch.fhnw.connectFour.persistance.FieldOwner;
 
+/**
+ * Handles all fields and sets/remove owners of them.
+ * 
+ * @author Michel Heiniger
+ * 
+ */
 public interface FieldModel {
 
 	/**

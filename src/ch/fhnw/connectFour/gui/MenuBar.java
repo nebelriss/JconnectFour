@@ -15,7 +15,7 @@ import javax.swing.KeyStroke;
 import ch.fhnw.connectFour.application.ApplicationContext;
 
 /**
- * creates the menubar in the mainframe.
+ * Creates the menubar in the mainframe.
  * 
  * @author Michel Heiniger
  * 

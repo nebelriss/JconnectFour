@@ -15,6 +15,8 @@ import ch.fhnw.connectFour.logic.listeners.FieldListener;
 import ch.fhnw.connectFour.persistance.FieldOwner;
 
 /**
+ * This panel draws a grid which is the gameboard. Everytime when a
+ * dataChanged() is fired be the field listener all pins get redrawn.
  * 
  * @author Michel Heiniger
  * 
@@ -35,6 +37,8 @@ public class GridPanel extends JPanel {
 	int border;
 
 	/**
+	 * Initializes all necessary stuff and registers a new field listener which
+	 * causes a repaint() when it gets fired.
 	 * 
 	 * @param applicationContext
 	 */
@@ -58,14 +62,11 @@ public class GridPanel extends JPanel {
 				repaint();
 			}
 		});
-		
+
 		log.info("grid panel loaded");
 
 	}
 
-	/**
-	 * 
-	 */
 	private void updateBounds() {
 		width = mainFrame.getWidth();
 		height = mainFrame.getHeight();
@@ -73,7 +74,7 @@ public class GridPanel extends JPanel {
 	}
 
 	/**
-	 * 
+	 * Paints the grid and all pins who have a owner.
 	 */
 	@Override
 	public void paintComponent(final Graphics g) {
@@ -88,6 +89,7 @@ public class GridPanel extends JPanel {
 	}
 
 	/**
+	 * Draws the horizontal lines.
 	 * 
 	 * @param g
 	 */
@@ -107,6 +109,7 @@ public class GridPanel extends JPanel {
 	}
 
 	/**
+	 * Draws the vertical lines.
 	 * 
 	 * @param g
 	 */
@@ -124,6 +127,8 @@ public class GridPanel extends JPanel {
 	}
 
 	/**
+	 * Checks if a field has a owner (computer, human), if yes the pin gets
+	 * drawn at the position.
 	 * 
 	 * @param g
 	 */
@@ -141,7 +146,7 @@ public class GridPanel extends JPanel {
 
 					g.setColor(Color.BLUE);
 					g.fillOval(x, y, 50, 50);
-					
+
 				} else if (fieldModel.getFieldOwner(i, j) == FieldOwner.human) {
 					int x = (border + (verticalStep * i) + 25);
 					int y = height - (2 * border) - (horizontalStep * j) + 25;

@@ -12,37 +12,43 @@ import ch.fhnw.connectFour.persistance.Field;
 import ch.fhnw.connectFour.persistance.FieldOwner;
 
 /**
+ * {@inheritDoc}
  * 
  * @author Michel Heiniger
- *
  */
 public class FieldModelImpl implements FieldModel {
-	
+
 	private static Logger log = Logger.getLogger("ch.fhnw.connectFour");
 	private List<FieldListener> listeners;
-	
+
 	int boardHeight;
 	int boardWidth;
-	
+
 	private Field[][] field;
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public FieldModelImpl(ApplicationContext applicationContext) {
 		// properties
 		Properties prop = applicationContext.getProperties();
-		
+
 		// get board size
 		boardHeight = new Integer(prop.getProperty("boardHeight"));
 		boardWidth = new Integer(prop.getProperty("boardWidth"));
-		
+
 		// create all fields
 		createFields();
-		
+
 		// init listener arreylist
 		listeners = new ArrayList<FieldListener>();
-		
+
 		log.info("FieldModelImpl loaded.");
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	private void createFields() {
 		// init 2d field array with boardSize
 		field = new Field[boardWidth][boardHeight];
@@ -55,11 +61,14 @@ public class FieldModelImpl implements FieldModel {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean setFieldChanged(int x, int y, FieldOwner fieldOwner) {
 
 		for (int i = 0; i < boardHeight; i++) {
-			
+
 			try {
 				if (field[x][i].getFieldOwner() == FieldOwner.none) {
 
@@ -83,11 +92,17 @@ public class FieldModelImpl implements FieldModel {
 		return false;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public FieldOwner getFieldOwner(int x, int y) {
 		return field[x][y].getFieldOwner();
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void clearFields() {
 		for (int i = 0; i < boardWidth; i++) {
@@ -97,19 +112,24 @@ public class FieldModelImpl implements FieldModel {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void addListener(FieldListener fieldListener) {
 		listeners.add(fieldListener);
 
 	}
-	
+
 	protected void fireChanged() {
-		for(FieldListener listener : listeners) {
+		for (FieldListener listener : listeners) {
 			listener.dataChanged();
 		}
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean setMove(int x, FieldOwner fieldOwner) {
 		for (int i = 0; i < boardHeight; i++) {
@@ -118,13 +138,16 @@ public class FieldModelImpl implements FieldModel {
 					field[x][i].setFieldOwner(fieldOwner);
 					return true;
 				}
-			} catch(ArrayIndexOutOfBoundsException e) {
+			} catch (ArrayIndexOutOfBoundsException e) {
 				return false;
 			}
 		}
 		return false;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean rmMove(int x) {
 		for (int i = boardHeight; i <= 0; i--) {
@@ -136,6 +159,9 @@ public class FieldModelImpl implements FieldModel {
 		return false;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean isRowFull(int x) {
 		try {
