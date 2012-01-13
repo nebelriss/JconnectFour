@@ -136,7 +136,12 @@ public class GridPanel extends JPanel {
 			for (int j = 0; j < boardHeight; j++) {
 
 				if (fieldModel.getFieldOwner(i, j) == FieldOwner.computer) {
-					g.fillOval(30, 30, 30, 30);
+					int x = (border + (verticalStep * i) + 25);
+					int y = height - (2 * border) - (horizontalStep * j) + 25;
+
+					g.setColor(Color.BLUE);
+					g.fillOval(x, y, 50, 50);
+					
 				} else if (fieldModel.getFieldOwner(i, j) == FieldOwner.human) {
 					int x = (border + (verticalStep * i) + 25);
 					int y = height - (2 * border) - (horizontalStep * j) + 25;

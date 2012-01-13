@@ -42,7 +42,9 @@ public class GameController {
 			@Override
 			public void dataChanged() {
 				player = !player;
-				playerPlayed();
+				if (!player) {
+					playerPlayed();
+				}
 			}
 		});
 
@@ -89,8 +91,6 @@ public class GameController {
 			int nextMove = logic.getNextMove();
 			
 			field.setFieldChanged(nextMove, 0, FieldOwner.computer);
-			
-			player = true;
 			
 		}
 		
