@@ -42,16 +42,24 @@ public class GameLogicImpl implements GameLogic{
 	public int getNextMove() {
 		int x = alphaBeta(compOwner, depth, alpha, beta);
 		
-		log.info("result of alphaBeta");
+		log.info("result of alphaBeta " + x);
 		return x;
 	}
 	
+	/**
+	 * 
+	 * @param owner Enum: none, computer, human
+	 * @param depth the depth of the gametree
+	 * @param alpha alpha value
+	 * @param beta beta value
+	 * @return the row of the next move
+	 */
 	private int alphaBeta(FieldOwner owner, int depth, int alpha, int beta) {
 		
 		// generate possible moves
 		List<Integer> moves = new ArrayList<Integer>();
 		for (int i = 0; i < boardHeight; i++) {
-			if (!field.isRowFull(i)) {
+			if (field.isRowFull(i)) {
 				moves.add(i);
 			}
 		}
@@ -61,6 +69,7 @@ public class GameLogicImpl implements GameLogic{
 			return evaluate();
 		}
 		
+		System.out.println(moves.size());
 		// run all moves
 		for (int i = 0; i < moves.size(); i++) {
 			// make move
@@ -74,7 +83,7 @@ public class GameLogicImpl implements GameLogic{
 			}
 			
 			// get value from recursive
-			int value = - alphaBeta(owner, --depth, -beta, -alpha);
+			int value = (-1) * alphaBeta(owner, --depth, -beta, -alpha);
 			
 			// undo move
 			field.rmMove(i);
