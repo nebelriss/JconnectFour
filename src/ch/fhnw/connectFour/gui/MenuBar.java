@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import ch.fhnw.connectFour.application.ApplicationContext;
+import ch.fhnw.connectFour.logic.FieldModel;
 
 /**
  * Creates the menubar in the mainframe.
@@ -27,6 +28,7 @@ public class MenuBar extends JMenuBar {
 	private Properties lang;
 
 	private ApplicationContext applicationContext;
+	private FieldModel field;
 
 	/**
 	 * Initializes the menubar and adds it to the main frame.
@@ -37,6 +39,7 @@ public class MenuBar extends JMenuBar {
 		super();
 
 		this.applicationContext = applicationContext;
+		field = applicationContext.getFieldModel();
 
 		// properties
 		lang = applicationContext.getLanguage();
@@ -53,6 +56,14 @@ public class MenuBar extends JMenuBar {
 		// File -> New
 		JMenuItem fileNewItem = new JMenuItem(lang.getProperty("fileNew"));
 		fileMenu.add(fileNewItem);
+		fileNewItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// reset all fields
+				field.clearFields();				
+			}
+		});
 		// keystroke
 		fileNewItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,
 				InputEvent.CTRL_DOWN_MASK));

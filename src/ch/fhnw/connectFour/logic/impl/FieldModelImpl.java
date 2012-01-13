@@ -112,6 +112,7 @@ public class FieldModelImpl implements FieldModel {
 				field[i][j].setFieldOwner(FieldOwner.none);
 			}
 		}
+		fireChanged();
 	}
 
 	/**
