@@ -45,10 +45,7 @@ public class GameLogicImpl implements GameLogic {
 		field = applicationContext.getFieldModel();
 
 		boardHeight = new Integer(prop.getProperty("boardHeight"));
-
-		depth = 6;
-		alpha = -1000;
-		beta = 1000;
+		
 		compOwner = FieldOwner.computer;
 
 		initDepth = depth;
@@ -59,9 +56,16 @@ public class GameLogicImpl implements GameLogic {
 	 */
 	@Override
 	public int getNextMove() {
+		// reset values
+		depth = 7;
+		alpha = -1000;
+		beta = 1000;
+		chosenMove = 0;
+		
 		int x = alphaBeta(compOwner, depth, alpha, beta);
 
 		log.info("result of alphaBeta " + x);
+		
 		return chosenMove;
 	}
 
